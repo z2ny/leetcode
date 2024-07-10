@@ -9,6 +9,7 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         if numRows == 1:
             return s
+        # res表示每行的字符串
         res = [''] * numRows
         i, flag = 0, -1
         # 不需要管中间的空格，只需要输出的字符串是对的就行
