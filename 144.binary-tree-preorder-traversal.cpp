@@ -36,35 +36,44 @@ using namespace std;
  * right(right) {}
  * };
  */
-class Solution {
- public:
-  //   vector<int> preorderTraversal(TreeNode* root) {
-  //     vector<int> res;
-  //     stack<TreeNode*> stk;
-  //     while (root != nullptr || !stk.empty()) {
-  //       while (root != nullptr) {
-  //         res.push_back(root->val);
-  //         stk.push(root);
-  //         root = root->left;
-  //       }
-  //       root = stk.top();
-  //       stk.pop();
-  //       root = root->right;
-  //     }
-  //     return res;
-  //   }
-  vector<int> preorderTraversal(TreeNode* root) {
+class Solution
+{
+public:
+  vector<int> preorderTraversal(TreeNode *root)
+  {
+    stack<TreeNode *> st;
     vector<int> res;
-    preorder(root, res);
+    if (!root)
+      return res;
+    st.push(root);
+    while (!st.empty())
+    {
+      TreeNode *temp = st.top();
+      res.push_back(temp->val);
+      st.pop();
+      if (temp->right)
+        st.push(temp->right);
+      if (temp->left)
+        st.push(temp->left);
+    }
     return res;
   }
 
-  void preorder(TreeNode* root, vector<int>& res) {
-    if (root == nullptr) return;
-    res.push_back(root->val);
-    preorder(root->left, res);
-    preorder(root->right, res);
-  }
+  // vector<int> preorderTraversal(TreeNode * root)
+  // {
+  //   vector<int> res;
+  //   preorder(root, res);
+  //   return res;
+  // }
+
+  // void preorder(TreeNode * root, vector<int> & res)
+  // {
+  //   if (root == nullptr)
+  //     return;
+  //   res.push_back(root->val);
+  //   preorder(root->left, res);
+  //   preorder(root->right, res);
+  // }
 };
 // @lc code=end
 

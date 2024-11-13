@@ -36,20 +36,44 @@ using namespace std;
  * right(right) {}
  * };
  */
-class Solution {
- public:
-  vector<int> inorderTraversal(TreeNode* root) {
+class Solution
+{
+public:
+  vector<int> inorderTravesal(TreeNode *root)
+  {
+    stack<TreeNode *> st;
     vector<int> res;
-    inorder(root, res);
-    return res;
+    if (!root)
+      return res;
+    st.push(root);
+    TreeNode *cur = root;
+    while (!st.empty())
+    {
+      
+    }
   }
 
-  void inorder(TreeNode* cur, vector<int>& res) {
-    if (!cur) return;
-    inorder(cur->left, res);
-    res.push_back(cur->val);
-    inorder(cur->right, res);
+  void pushLeft(TreeNode *cur, stack<TreeNode *> st)
+  {
+    while (cur)
+    {
+      st.push(cur);
+      cur = cur->left;
+    }
   }
+
+  // vector<int> inorderTraversal(TreeNode* root) {
+  //   vector<int> res;
+  //   inorder(root, res);
+  //   return res;
+  // }
+
+  // void inorder(TreeNode* cur, vector<int>& res) {
+  //   if (!cur) return;
+  //   inorder(cur->left, res);
+  //   res.push_back(cur->val);
+  //   inorder(cur->right, res);
+  // }
 };
 // @lc code=end
 
